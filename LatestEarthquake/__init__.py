@@ -25,7 +25,7 @@ def DataExtraction():
         ls = None
         bt = None
         location  = None
-        dirasakan = None
+        dampak = None
         
         for datalist in datascrap:
             
@@ -40,7 +40,7 @@ def DataExtraction():
             elif i == 4:
                 location = datalist.text
             elif i == 5:
-                dirasakan = datalist.text
+                dampak = datalist.text
                 
             i = i + 1
         
@@ -51,7 +51,7 @@ def DataExtraction():
         hasil['kedalaman']     = kedalaman
         hasil['koordinat']     = {'ls':ls, 'bt':bt}
         hasil['lokasi']        = location
-        hasil['dirasakan']     = dirasakan
+        hasil['dampak']        = dampak
         
         return hasil
     else:
@@ -70,7 +70,9 @@ def ShowData(result):
     print(f"Kedalaman  : {result['kedalaman']}")
     print(f"Koordinat  : LS = {result['koordinat']['ls']} | BT = {result['koordinat']['bt']}")
     print(f"Lokasi     : {result['lokasi']}")
-    print(f"Dirasakan  : {result['dirasakan']}")
+    print(f"Dampak     : {result['dampak']}")
     
 if __name__ == '__main__':
     print('Package BMKG Latest Earthquake')
+    result = DataExtraction()
+    ShowData(result)
